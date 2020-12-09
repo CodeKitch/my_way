@@ -1,0 +1,7 @@
+<a href="/songs/<%= @song.id %>/edit">Edit</a>
+   <a href="/my_songs/<%= @my_song.id %>/edit">Edit</a>
+
+   <form method="POST" action="/my_song/<%= @my_song.id %>">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="DELETE SONG">
+   </form>

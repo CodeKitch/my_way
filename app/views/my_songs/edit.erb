@@ -1,0 +1,11 @@
+<h1>EDIT YOUR SONGS</h1>
+
+<form method="POST" action="/my_songs/<%= @my_songs.id %>">
+
+    <input type="hidden" name="_method" value="PUT">
+    Song: <input type="text" name="my_songs[rename]" value="<%= @my_songs.rename%>">
+    <input type="submit" value="Update Song">
+
+</form>
+
+

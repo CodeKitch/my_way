@@ -1,0 +1,9 @@
+<h1> MY SONGS </h1>
+<h2> Index View </h2>
+<% if logged_in?  %>
+  <h3>Logged in user:  <%= current_user.email %></h3>
+<% end %>
+<% @my_songs.each do |s|  %> 
+
+  <%= s.id %> -  <a href="/my_songs/<%=s.id%>"><%=s.rename %></a> <br>
+<% end %>
