@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2020_12_08_175758) do
   create_table "my_songs", force: :cascade do |t|
     t.string "rename"
     t.string "style_of_remake"
-    t.string "add_note"
+    t.text "add_note"
     t.integer "song_id"
     t.integer "user_id"
   end

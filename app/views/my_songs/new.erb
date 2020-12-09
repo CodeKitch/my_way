@@ -1,49 +1,16 @@
-<h2>MAKE SONGS HERE</h2>
-<form method="POST" action="/songs">
-    Original Song: <input type="text" name="song">
-    Musician: <input type="text" name="musician">
-    Genre: <input type="text" name="genre">
-    Year of Relelese: <input type="datetime" name="add_note">
-    <select name="song_id">
-        <% Song.all.each do |s| %>
-            <option value="<%= s.id %>"><%= s.song %></option>
-        <% end %>
-    </select>
-    <input type="submit" value="Make Song">
-</form>
+<h2>ENTER SONG HERE YOU WOULD LIKE TO DO YOUR WAY!</h2>
 
 <form method="POST" action="/my_songs">
+    Original: <input type="text" name="song.song">
+    Musician: <input type="text" name="song.musician">
+    Genre: <input type="text" name="song.genre">
+    YEAR: <input type="datetime" name="song.year">
+
+
+<h2>MY WAY SONG</h2>
     Rename: <input type="text" name="rename">
-    Make in the style of: <input type="text" name="style_of_remake">
-    Note: <input type="text" name="add_note">
-    Song: 
-    <select name="song_id">
-        <% Song.all.each do |s| %>
-            <option value="<%= s.id %>"><%= s.song %></option>
-        <% end %>
-    </select>
+    Cover in the style of: <input type="text" name="style_of_remake">
+    Note: <textarea type="text" name="add_note" cols="25" rows="3"></textarea>
+  
     <input type="submit" value="Make Song">
 </form>
-
-<%# 
-  create_table "my_songs", force: :cascade do |t|
-    t.string "rename"
-    t.string "style_of_remake"
-    t.string "add_note"
-    t.integer "song_id"
-    t.integer "user_id"
-  end
-
-  create_table "songs", force: :cascade do |t|
-    t.string "song"
-    t.string "musician"
-    t.string "genre"
-    t.datetime "year"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "email"
-    t.string "password_digest"
-  end
-
-end %>

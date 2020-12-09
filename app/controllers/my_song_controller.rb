@@ -14,40 +14,40 @@ class MySongController < ApplicationController
 
     get '/my_songs/:id' do
         redirect_if_not_logged_in
-        @my_songs = MySong.find(params["id"])
+        @my_song = MySong.find(params["id"])
         erb :"my_songs/show"
     end
 
     post '/my_songs' do 
         redirect_if_not_logged_in
-        my_songs = current_user.my_songs.build(params)
-        my_songs.save 
+        my_song = current_user.my_songs.build(params)
+        my_song.save 
         redirect '/my_songs'
     end
 
     get '/my_songs/:id/edit' do
-        @my_songs = MySong.find(params["id"])
+        @my_song = MySong.find(params["id"])
         redirect_if_not_authorized
         erb :"my_songs/edit"
     end
 
     put '/my_songs/:id' do
-        @my_songs = MySong.find(params["id"]) 
+        @my_song = MySong.find(params["id"]) 
         redirect_if_not_authorized
-        @my_songs.update(params["my_songs"])
-        redirect "/my_songs/#{@my_songs.id}"
+        @my_song.update(params["my_songs"])
+        redirect "/my_songs/#{@my_song.id}"
     end
 
     delete '/my_songs/:id' do 
-        @my_songs = MySong.find(params["id"])
+        @my_song = MySong.find(params["id"])
         redirect_if_not_authorized
-        @my_songs.destroy
+        @my_song.destroy
         redirect '/my_songs'
     end
 
     private 
     def redirect_if_not_authorized
-        if @my_songs.user != current_user
+        if @my_song.user != current_user
             redirect '/my_songs'
         end
     end

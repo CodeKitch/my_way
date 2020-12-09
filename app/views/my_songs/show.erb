@@ -1,7 +1,24 @@
-<a href="/songs/<%= @song.id %>/edit">Edit</a>
-   <a href="/my_songs/<%= @my_song.id %>/edit">Edit</a>
+<h2> MY SHOW PAGE </h2>
+<h3>Rename: <%= @my_song.rename %> </h3>
+<h3>Make in the style of: <%= @my_song.style_of_remake %> </h3>
+<h3>Note: <%= @my_song.add_note %> </h3>
 
-   <form method="POST" action="/my_song/<%= @my_song.id %>">
-      <input type="hidden" name="_method" value="DELETE">
-      <input type="submit" value="DELETE SONG">
-   </form>
+<h2> The Original Song You Would Like to Do Your Way! </h2>
+
+<p>Musician: <%= @my_song.song.try(:musician) || "N/A" %></p>
+<h3>Genre: <%= @my_song.song.try(:genre) || "N/A" %></h3>
+<h3>YEAR: <%= @my_song.song.try(:year) || "N/A" %></h3>
+
+<a href="/my_songs/<%= @my_song.id %>/edit">Edit</a>
+
+
+<% if @my_song.user == current_user %>
+
+<a href="/my_songs/<%= @my_song.id %>/edit">Edit</a>
+
+<form method="POST" action="/my_songs/<%= @my_song.id %>">
+<input type="hidden" name="_method" value="DELETE">
+<input type="submit" value="DELETE SONG">
+</form>
+<% end %>
+
