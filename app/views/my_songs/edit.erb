@@ -1,8 +1,23 @@
 <h1>EDIT YOUR SONGS</h1>
 
-<form method="POST" action="/my_songs"<%= @my_songs.id %>">
+<form method="POST" action="/my_songs"<%= @my_song.id %>">
 
-    <input type="hidden" name="_method" value="PUT">
+<input type="hidden" name="_method" value="PUT">
+
+<h2> "MY WAY" - SONG </h2>
+Renamed: <input type="text" name="my_songs[rename]" value="<%= @my_song.rename%>">
+Make in the style of: <input type="text" name="my_songs[style_of_remake]" value="<%= @my_song.style_of_remake%>">
+Notes: <input type="text" name="my_songs[add_note]" cols="25" rows="3"value="<%= @my_song.add_note%>">
+<textarea type="text" name="my_song[add_note]" cols="25" rows="3"></textarea>
+
+<br>
+<br>
+
+<h2> The Original Song </h2>
+Original: <input type="text" name="my_song[song]" value="<%= @my_song.song%>">
+Musician: <input type="text" name="my_song[musician]" value="<%= @my_song.musician%>">
+Genre: <input type="text" name="my_song[genre]" value="<%= @my_song.genre%>">
+Year: <input type="number" name="my_song[year]" value="<%= @my_song.year%>">
 
     <input type="submit" value="Update Song">
 

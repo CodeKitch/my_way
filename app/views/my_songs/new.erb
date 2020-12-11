@@ -1,16 +1,19 @@
-<h2>ENTER SONG HERE YOU WOULD LIKE TO DO YOUR WAY!</h2>
+<h2>ENTER ORIGINAL SONG YOU WOULD LIKE TO DO YOUR WAY!</h2>
 
 <form method="POST" action="/my_songs">
-    Original: <input type="text" name="song.song">
-    Musician: <input type="text" name="song.musician">
-    Genre: <input type="text" name="song.genre">
-    YEAR: <input type="datetime" name="song.year">
 
+    Name: <input type="text" name="song[song]">
+    Musician: <input type="text" name="song[musician]">
+    Genre: <input type="text" name="song[genre]">
+    Year: <input type="number" name="song[year]">
 
-<h2>MY WAY SONG</h2>
-    Rename: <input type="text" name="rename">
-    Cover in the style of: <input type="text" name="style_of_remake">
-    Note: <textarea type="text" name="add_note" cols="25" rows="3"></textarea>
+<br>
+<br>
+
+<h2>SONG RECREATED - "MY WAY"</h2>
+    Renamed: <input type="text" name="my_song[rename]">
+    Cover in the style of: <input type="text" name="my_song[style_of_remake]">
+    Notes: <textarea type="text" name="my_song[add_note]" cols="25" rows="3"></textarea>
   
     <input type="submit" value="Make Song">
 </form>

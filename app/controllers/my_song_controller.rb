@@ -20,8 +20,10 @@ class MySongController < ApplicationController
 
     post '/my_songs' do 
         redirect_if_not_logged_in
-        my_song = current_user.my_songs.build(params)
-        my_song.save 
+        song = Song.new(params[:song])
+        my_song = MySong.new(params[:my_song])
+        my_song.song = song
+        my_song.save
         redirect '/my_songs'
     end
 

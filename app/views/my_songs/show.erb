@@ -1,16 +1,23 @@
-<h2> MY SHOW PAGE </h2>
-<h3>Rename: <%= @my_song.rename %> </h3>
-<h3>Make in the style of: <%= @my_song.style_of_remake %> </h3>
-<h3>Note: <%= @my_song.add_note %> </h3>
+<h1> MY SHOW PAGE </h1>
 
-<h2> The Original Song You Would Like to Do Your Way! </h2>
+<br>
+<br>
 
-<p>Musician: <%= @my_song.song.try(:musician) || "N/A" %></p>
-<h3>Genre: <%= @my_song.song.try(:genre) || "N/A" %></h3>
-<h3>YEAR: <%= @my_song.song.try(:year) || "N/A" %></h3>
+<h2> "MY WAY" - SONG </h2>
 
-<a href="/my_songs/<%= @my_song.id %>/edit">Edit</a>
+<h4>Renamed: <%= @my_song.rename %> </h4>
+<h4>Make in the style of: <%= @my_song.style_of_remake %> </h4>
+<h4>Notes: <%= @my_song.add_note %> </h4>
 
+<br>
+<br>
+
+<h2> The Original Song </h2>
+
+<h4>Song Name: <%= @my_song.song_id.try(:song) || "N/A" %></h4>
+<h4>Musician: <%= @song.try(:musician) || "N/A" %></h4>
+<h4>Genre: <%= @song.try(:genre) || "N/A" %></h4>
+<h4>Year: <%= @song.try(:year) || "N/A" %></h4>
 
 <% if @my_song.user == current_user %>
 
@@ -21,4 +28,3 @@
 <input type="submit" value="DELETE SONG">
 </form>
 <% end %>
-
