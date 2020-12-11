@@ -43,7 +43,7 @@ class MySongController < ApplicationController
     end
 
     delete '/my_songs/:id' do 
-        @my_sojjng = MySong.find(params["id"])
+        @my_song = MySong.find(params["id"])
         redirect_if_not_authorized
         @my_song.destroy
         redirect '/my_songs'
