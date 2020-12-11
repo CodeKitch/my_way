@@ -14,13 +14,13 @@
 
 <h2> The Original Song </h2>
 
-<h4>Song Name: <%= @my_song.song_id.try(:song) || "N/A" %></h4>
+<h4>Name: <%= @song.try(:song) || "N/A" %></h4>
 <h4>Musician: <%= @song.try(:musician) || "N/A" %></h4>
 <h4>Genre: <%= @song.try(:genre) || "N/A" %></h4>
 <h4>Year: <%= @song.try(:year) || "N/A" %></h4>
 
 <% if @my_song.user == current_user %>
-
+ 
 <a href="/my_songs/<%= @my_song.id %>/edit">Edit</a>
 
 <form method="POST" action="/my_songs/<%= @my_song.id %>">

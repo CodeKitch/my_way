@@ -4,7 +4,7 @@ class CreateSongs < ActiveRecord::Migration[5.2]
       t.string :song
       t.string :musician
       t.string :genre
-      t.datetime :year
+      t.integer :year
     end
   end
 end 

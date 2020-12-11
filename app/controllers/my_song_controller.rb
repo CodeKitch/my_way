@@ -2,6 +2,7 @@ class MySongController < ApplicationController
 
     get '/my_songs' do 
         @my_songs = MySong.all
+        @songs = Song.all
         erb :"my_songs/index" 
     end
 
@@ -23,6 +24,7 @@ class MySongController < ApplicationController
         song = Song.new(params[:song])
         my_song = MySong.new(params[:my_song])
         my_song.song = song
+        my_song.user_id = session[:user_id]
         my_song.save
         redirect '/my_songs'
     end
@@ -41,11 +43,19 @@ class MySongController < ApplicationController
     end
 
     delete '/my_songs/:id' do 
-        @my_song = MySong.find(params["id"])
+        @my_sojjng = MySong.find(params["id"])
         redirect_if_not_authorized
         @my_song.destroy
         redirect '/my_songs'
     end
+
+    helpers do 
+        def valid_params?
+            params[:flavor].none? do |k,v|
+                v == ""
+            end
+        end
+      end
 
     private 
     def redirect_if_not_authorized

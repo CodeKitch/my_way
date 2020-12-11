@@ -24,11 +24,12 @@ ActiveRecord::Schema.define(version: 2020_12_08_175758) do
     t.string "song"
     t.string "musician"
     t.string "genre"
-    t.datetime "year"
+    t.integer "year"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
   end
+
 end
