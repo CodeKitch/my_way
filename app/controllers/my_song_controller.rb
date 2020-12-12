@@ -30,7 +30,9 @@ class MySongController < ApplicationController
     end
 
     get '/my_songs/:id/edit' do
+        @song = Song.find(params["id"])
         @my_song = MySong.find(params["id"])
+     
         redirect_if_not_authorized
         erb :"my_songs/edit"
     end
@@ -48,14 +50,6 @@ class MySongController < ApplicationController
         @my_song.destroy
         redirect '/my_songs'
     end
-
-    helpers do 
-        def valid_params?
-            params[:flavor].none? do |k,v|
-                v == ""
-            end
-        end
-      end
 
     private 
     def redirect_if_not_authorized
