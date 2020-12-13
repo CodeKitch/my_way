@@ -10,7 +10,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do 
-     "Welcome"
+     erb :"home"
   end
 
   helpers do
@@ -23,15 +23,6 @@ class ApplicationController < Sinatra::Base
       end
   end
 
-
-  helpers do 
-    def valid_params?
-        params[:flavor].none? do |k,v|
-            v == ""
-        end
-    end
-  end
-  
   private 
     def redirect_if_not_logged_in
         if !logged_in?

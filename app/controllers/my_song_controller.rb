@@ -1,9 +1,3 @@
- 
-
-
-
-
-
 class MySongController < ApplicationController
 
     get '/my_songs' do 
@@ -21,6 +15,7 @@ class MySongController < ApplicationController
 
     get '/my_songs/:id' do
         redirect_if_not_logged_in
+        @song = Song.find(params["id"])
         @my_song = MySong.find(params["id"])
         erb :"my_songs/show"
     end
@@ -38,7 +33,6 @@ class MySongController < ApplicationController
     get '/my_songs/:id/edit' do
         @song = Song.find(params["id"])
         @my_song = MySong.find(params["id"])
-     
         redirect_if_not_authorized
         erb :"my_songs/edit"
     end
@@ -47,14 +41,9 @@ class MySongController < ApplicationController
         @song = Song.find(params["id"])
         @my_song = MySong.find(params["id"])
         redirect_if_not_authorized
-        @my_song = MySong(params[:my_song])
-        @my_song.song = @song
         @my_song.update(params[:my_song])
         redirect "/my_songs/#{@my_song.id}"
     end
-
-
-# ———————————————
 
     delete '/my_songs/:id' do 
         @my_song = MySong.find(params["id"])
@@ -63,6 +52,14 @@ class MySongController < ApplicationController
         redirect '/my_songs'
     end
 
+    helpers do 
+        def valid_params?
+            params[:my_song].none? do |k,v|
+                v == ""
+            end
+        end
+      end
+      
     private 
     def redirect_if_not_authorized
         if @my_song.user != current_user
