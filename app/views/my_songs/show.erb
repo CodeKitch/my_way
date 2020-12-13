@@ -9,7 +9,7 @@
 <h4>Renamed: <%= @my_song.try(:rename) || "N/A"  %> </h4>
 <h4>Make in the style of: <%= @my_song.try(:style_of_remake) || "N/A"  %> </h4>
 <h4>Note: <%= @my_song.try(:add_note) || "N/A"  %> </h4>
-
+<br>
 <% if @my_song.user == current_user %>
 <a href="/my_songs/<%= @my_song.id %>/edit">Edit "My Way" Song</a>
 <% end %>
@@ -23,7 +23,7 @@
 <h4>Musician: <%= @song.try(:musician) || "N/A" %></h4>
 <h4>Genre: <%= @song.try(:genre) || "N/A" %></h4>
 <h4>Year: <%= @song.try(:year) || "N/A" %></h4>
-
+<br>
 <% if @my_song.user == current_user %>
 <form method="POST" action="/my_songs/<%= @my_song.id %>">
 <input type="hidden" name="_method" value="DELETE">
