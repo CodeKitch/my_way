@@ -22,12 +22,16 @@ class MySongController < ApplicationController
 
     post '/my_songs' do 
         redirect_if_not_logged_in
-        song = Song.new(params[:song])
-        my_song = MySong.new(params[:my_song])
-        my_song.song = song
-        my_song.user_id = session[:user_id]
-        my_song.save
-        redirect '/my_songs'
+        if valid_params?
+            song = Song.new(params[:song])
+            my_song = MySong.new(params[:my_song])
+            my_song.song = song
+            my_song.user_id = session[:user_id]
+            my_song.save 
+            redirect '/my_songs'
+        else
+           erb :'my_songs/new'
+        end
     end
 
     get '/my_songs/:id/edit' do
@@ -41,8 +45,12 @@ class MySongController < ApplicationController
         @song = Song.find(params["id"])
         @my_song = MySong.find(params["id"])
         redirect_if_not_authorized
-        @my_song.update(params[:my_song])
-        redirect "/my_songs/#{@my_song.id}"
+        if valid_params?
+            @my_song.update(params[:my_song])
+            redirect "/my_songs/#{@my_song.id}"
+        else
+            redirect "my_songs/#{@my_song.id}/edit"
+        end
     end
 
     delete '/my_songs/:id' do 
