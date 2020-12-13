@@ -1,3 +1,9 @@
+ 
+
+
+
+
+
 class MySongController < ApplicationController
 
     get '/my_songs' do 
@@ -37,13 +43,13 @@ class MySongController < ApplicationController
         erb :"my_songs/edit"
     end
 
-    put '/my_songs/:id' do
-        @my_song = MySong.find(params["id"]) 
+    patch '/my_songs/:id' do
+        @my_song = MySong.find(params["id"])
         redirect_if_not_authorized
-        @my_song.update(params["my_songs"])
+        @my_song.update(params[:my_song])
         redirect "/my_songs/#{@my_song.id}"
     end
-
+    
     delete '/my_songs/:id' do 
         @my_song = MySong.find(params["id"])
         redirect_if_not_authorized

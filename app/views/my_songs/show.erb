@@ -5,9 +5,9 @@
 
 <h2> "MY WAY" - SONG </h2>
 
-<h4>Renamed: <%= @my_song.rename %> </h4>
-<h4>Make in the style of: <%= @my_song.style_of_remake %> </h4>
-<h4>Note: <%= @my_song.add_note %> </h4>
+<h4>Renamed: <%= @my_song.try(:rename) || "N/A"  %> </h4>
+<h4>Make in the style of: <%= @my_song.try(:style_of_remake) || "N/A"  %> </h4>
+<h4>Note: <%= @my_song.try(:add_note) || "N/A"  %> </h4>
 
 <br>
 <br>
