@@ -44,12 +44,18 @@ class MySongController < ApplicationController
     end
 
     patch '/my_songs/:id' do
+        @song = Song.find(params["id"])
         @my_song = MySong.find(params["id"])
         redirect_if_not_authorized
+        @my_song = MySong(params[:my_song])
+        @my_song.song = @song
         @my_song.update(params[:my_song])
         redirect "/my_songs/#{@my_song.id}"
     end
-    
+
+
+# ———————————————
+
     delete '/my_songs/:id' do 
         @my_song = MySong.find(params["id"])
         redirect_if_not_authorized

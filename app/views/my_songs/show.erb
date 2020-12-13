@@ -16,10 +16,10 @@
 
 <h2> The Original Song </h2>
 
-<h4>Original: <%= @my_song.song.try(:song) || "N/A" %></h4>
-<h4>Musician: <%= @my_song.song.try(:musician) || "N/A" %></h4>
-<h4>Genre: <%= @my_song.song.try(:genre) || "N/A" %></h4>
-<h4>Year: <%= @my_song.song.try(:year) || "N/A" %></h4>
+<h4>Original: <%= @song.try(:song) || "N/A" %></h4>
+<h4>Musician: <%= @song.try(:musician) || "N/A" %></h4>
+<h4>Genre: <%= @song.try(:genre) || "N/A" %></h4>
+<h4>Year: <%= @song.try(:year) || "N/A" %></h4>
 
 
 <% if @my_song.user == current_user %>
