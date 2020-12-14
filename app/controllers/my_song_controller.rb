@@ -3,21 +3,21 @@ class MySongController < ApplicationController
     get '/my_songs' do 
         @my_songs = MySong.all
         @songs = Song.all
-        erb :"my_songs/index" 
+        erb :'my_songs/index' 
     end
 
     get '/my_songs/new' do 
         if !logged_in? 
             redirect '/login'
         end
-        erb :"my_songs/new"
+        erb :'my_songs/new'
     end
 
     get '/my_songs/:id' do
         redirect_if_not_logged_in
         @song = Song.find(params["id"])
         @my_song = MySong.find(params["id"])
-        erb :"my_songs/show"
+        erb :'my_songs/show'
     end
 
     post '/my_songs' do 
@@ -38,7 +38,7 @@ class MySongController < ApplicationController
         @song = Song.find(params["id"])
         @my_song = MySong.find(params["id"])
         redirect_if_not_authorized
-        erb :"my_songs/edit"
+        erb :'my_songs/edit'
     end
 
     patch '/my_songs/:id' do
@@ -47,9 +47,9 @@ class MySongController < ApplicationController
         redirect_if_not_authorized
         if valid_params?
             @my_song.update(params[:my_song])
-            redirect "/my_songs/#{@my_song.id}"
+            redirect '/my_songs/#{@my_song.id}'
         else
-            redirect "my_songs/#{@my_song.id}/edit"
+            redirect 'my_songs/#{@my_song.id}/edit'
         end
     end
 
