@@ -47,9 +47,9 @@ class MySongController < ApplicationController
         redirect_if_not_authorized
         if valid_params?
             @my_song.update(params[:my_song])
-            redirect '/my_songs/#{@my_song.id}'
+            redirect '/my_songs'
         else
-            redirect 'my_songs/#{@my_song.id}/edit'
+            redirect '/my_songs'
         end
     end
 
