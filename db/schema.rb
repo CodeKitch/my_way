@@ -10,26 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_08_175758) do
-
-  create_table "my_songs", force: :cascade do |t|
-    t.string "rename"
-    t.string "style_of_remake"
-    t.text "add_note"
-    t.integer "song_id"
-    t.integer "user_id"
-  end
-
-  create_table "songs", force: :cascade do |t|
-    t.string "song"
-    t.string "musician"
-    t.string "genre"
-    t.integer "year"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "email"
-    t.string "password_digest"
-  end
+ActiveRecord::Schema.define(version: 0) do
 
 end
