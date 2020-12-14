@@ -10,7 +10,7 @@ Run `bundle install`; this will install gem dependencies from the included `Gemf
 
 ## Usage
 
-This Sinatra application will function on a local server simulating an online experience. Use the Sinatra Shotgun Server below or your preferred environment to accomplish this.
+This Sinatra application will function on a local server simulating an online experience. Use the Sinatra Shotgun Server or your preferred environment to accomplish this.
 [Sinatra Shotgun Server](https://learn.co/lessons/sinatra-shotgun-server)
 
 ### Built With
